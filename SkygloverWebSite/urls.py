@@ -15,8 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from home.views import index
 
 urlpatterns = [
-    url(r'^', 'home.views.index'),
+    url(r'^', index),
     url(r'^admin/', include(admin.site.urls)),
 ]
