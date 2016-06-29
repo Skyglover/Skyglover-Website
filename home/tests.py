@@ -1,14 +1,17 @@
+from django.http import HttpRequest
+from django.template.loader import render_to_string
 from django.test import TestCase
-from selenium import webdriver
+
+from home.views import home_page
 
 
 class HomePageTest(TestCase):
-    def setUp(self):
-        self.browser = webdriver.Chrome('/home/m/chromedriver')
+    def test_home_page_uses_home_template(self):
+        request = HttpRequest()
+        response = home_page(request)
+        expected_content = render_to_string('static_pages/home.html')
 
-    def tearDown(self):
-        self.browser.quit()
-
-    def test_home_page(self):
-        self.browser.get('http://localhost:8000')
-        self.assertIn('To-Do', self.browser.title)
+        self.assertEqual(
+            expected_content,
+            response.content.decode()
+        )
