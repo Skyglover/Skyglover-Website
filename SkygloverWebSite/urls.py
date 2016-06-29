@@ -19,7 +19,7 @@ from projects.views import project_page
 from home.views import home_page
 
 urlpatterns = [
-    url(r'^$', home_page),
-    url(r'^projects/', project_page),
+    url(r'^$', home_page, name='home'),
+    url(r'^projects/', project_page, name='projects'),
     url(r'^admin/', include(admin.site.urls)),
 ]
