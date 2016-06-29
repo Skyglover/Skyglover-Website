@@ -1,5 +1,10 @@
 import unittest
+
 from selenium import webdriver
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.wait import WebDriverWait
 
 
 class HomePageTest(unittest.TestCase):
@@ -13,9 +18,17 @@ class HomePageTest(unittest.TestCase):
         self.browser.get('http://localhost:8000')
         projects_link = self.browser.find_element_by_id('projects')
         projects_link.click()
-        self.assertIn('Projects', self.browser.find_element_by_class_name("h1").text)
+
+        try:
+            WebDriverWait(self.browser, 10).until(
+                expected_conditions.presence_of_element_located((By.ID, 'title'))
+            )
+        except TimeoutException:
+            self.fail("Page took too much time to load!")
+
+        h1 = self.browser.find_element_by_tag_name("h1")
+        self.assertEqual('Projects', h1.text)
 
 
 if __name__ == "__main__":
     unittest.main(warnings='ignore')
-
