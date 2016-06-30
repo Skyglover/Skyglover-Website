@@ -1,10 +1,17 @@
+import os
+import sys
 import unittest
-
 from selenium import webdriver
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
+from django import setup
+
+sys.path.append("./")
+os.environ["DJANGO_SETTINGS_MODULE"] = "SkygloverWebSite.settings"
+setup()
+from projects.models import Project
 
 
 class HomePageTest(unittest.TestCase):
