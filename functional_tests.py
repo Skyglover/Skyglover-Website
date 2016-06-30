@@ -36,18 +36,16 @@ class HomePageTest(unittest.TestCase):
         h1 = self.browser.find_element_by_tag_name("h1")
         self.assertEqual('Projects', h1.text)
 
-        project_names = ['Power Analyzer', 'Skyglover Website']
-        project_descriptions = ['This is a power analyzer system.', 'This is a website for Skyglover.']
+        projects = Project.objects.all()
+        displayed_projects = self.browser.find_elements_by_class_name('project')
 
-        projects = self.browser.find_elements_by_class_name('project')
-
-        self.assertEqual(2, len(projects))
+        self.assertEqual(len(projects), len(displayed_projects))
 
         for index in range(len(projects)):
-            project_name = projects[index].find_element_by_tag_name('li').text
-            project_description = projects[index].find_element_by_tag_name('p').text
-            self.assertEqual(project_names[index], project_name)
-            self.assertEqual(project_descriptions[index], project_description)
+            project_name = displayed_projects[index].find_element_by_tag_name('li').text
+            project_description = displayed_projects[index].find_element_by_tag_name('p').text
+            self.assertEqual(projects[index].name, project_name)
+            self.assertEqual(projects[index].description, project_description)
 
 
 if __name__ == "__main__":
