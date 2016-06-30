@@ -1,6 +1,4 @@
-import os
-import sys
-import unittest
+import os, sys, unittest
 from django import setup
 from selenium import webdriver
 
@@ -40,7 +38,7 @@ class ProjectsPageTest(unittest.TestCase):
     def test_label_is_displayed_when_no_projects_available(self):
         # TODO: navigate to projects
         # TODO: I see a label that indicates that currently there are no projects
-        pass
+        self.fail("Complete tests")
 
 if __name__ == "__main__":
     unittest.main(warnings='ignore')

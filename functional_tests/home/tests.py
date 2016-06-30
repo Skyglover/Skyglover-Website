@@ -1,5 +1,4 @@
 import unittest
-
 import sys
 from selenium import webdriver
 sys.path.append("./")
