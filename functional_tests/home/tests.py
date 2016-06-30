@@ -11,7 +11,6 @@ from django import setup
 sys.path.append("./")
 os.environ["DJANGO_SETTINGS_MODULE"] = "SkygloverWebSite.settings"
 setup()
-from projects.models import Project
 
 
 class HomePageTest(unittest.TestCase):
