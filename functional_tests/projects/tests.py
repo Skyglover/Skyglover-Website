@@ -14,27 +14,41 @@ setup()
 from projects.models import Project
 
 
-class HomePageTest(unittest.TestCase):
+class ProjectsPageTest(unittest.TestCase):
     def setUp(self):
         self.browser = webdriver.Chrome('/home/m/chromedriver')
 
     def tearDown(self):
         self.browser.quit()
 
-    def test_projects_page_can_be_accessed_from_home_page(self):
+    def test_projects_are_displayed(self):
         self.browser.get('http://localhost:8000')
         projects_link = self.browser.find_element_by_id('projects')
         projects_link.click()
 
+        self.wait_for_page_to_load_with_id()
+
+        h1 = self.browser.find_element_by_tag_name("h1")
+        self.assertEqual('Projects', h1.text)
+
+        projects = Project.objects.all()
+        displayed_projects = self.browser.find_elements_by_class_name('project')
+
+        self.assertEqual(len(projects), len(displayed_projects))
+
+        for index in range(len(projects)):
+            project_name = displayed_projects[index].find_element_by_tag_name('li').text
+            project_description = displayed_projects[index].find_element_by_tag_name('p').text
+            self.assertEqual(projects[index].name, project_name)
+            self.assertEqual(projects[index].description, project_description)
+
+    def wait_for_page_to_load_with_id(self, time_to_wait=10):
         try:
-            WebDriverWait(self.browser, 10).until(
+            WebDriverWait(self.browser, time_to_wait).until(
                 expected_conditions.presence_of_element_located((By.ID, 'title'))
             )
         except TimeoutException:
             self.fail("Page took too much time to load!")
-
-        h1 = self.browser.find_element_by_tag_name("h1")
-        self.assertEqual('Projects', h1.text)
 
 
 if __name__ == "__main__":
