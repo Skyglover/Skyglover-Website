@@ -29,6 +29,17 @@ class HomePageTest(unittest.TestCase):
         h1 = self.browser.find_element_by_tag_name("h1")
         self.assertEqual('Projects', h1.text)
 
+        project_titles = ['Power Analyzer', 'Skyglover Website']
+        project_descriptions = ['This is a power analyzer system.', 'This is a website for Skyglover.']
+
+        projects = self.browser.find_elements_by_class_name('project')
+
+        for index in range(len(projects)):
+            project_title = projects[index].find_element_by_tag_name('li').text
+            project_description = projects[index].find_element_by_tag_name('p').text
+            self.assertEqual(project_titles[index], project_title)
+            self.assertEqual(project_descriptions[index], project_description)
+
 
 if __name__ == "__main__":
     unittest.main(warnings='ignore')
