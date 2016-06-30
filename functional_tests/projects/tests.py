@@ -1,17 +1,18 @@
 import os
 import sys
 import unittest
+from django import setup
 from selenium import webdriver
 from selenium.common.exceptions import TimeoutException
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.wait import WebDriverWait
-from django import setup
 
 sys.path.append("./")
+sys.path.append("./functional_tests/util/")
+
 os.environ["DJANGO_SETTINGS_MODULE"] = "SkygloverWebSite.settings"
 setup()
 from projects.models import Project
+# noinspection PyUnresolvedReferences
+from util import wait_for_page_to_load_with_id
 
 
 class ProjectsPageTest(unittest.TestCase):
@@ -26,7 +27,10 @@ class ProjectsPageTest(unittest.TestCase):
         projects_link = self.browser.find_element_by_id('projects')
         projects_link.click()
 
-        self.wait_for_page_to_load_with_id('title')
+        try:
+            wait_for_page_to_load_with_id(self.browser, 'title')
+        except TimeoutException:
+            self.fail("Page took too much time to load!")
 
         h1 = self.browser.find_element_by_tag_name("h1")
         self.assertEqual('Projects', h1.text)
@@ -41,14 +45,6 @@ class ProjectsPageTest(unittest.TestCase):
             project_description = displayed_projects[index].find_element_by_tag_name('p').text
             self.assertEqual(projects[index].name, project_name)
             self.assertEqual(projects[index].description, project_description)
-
-    def wait_for_page_to_load_with_id(self, page_id, time_to_wait=10):
-        try:
-            WebDriverWait(self.browser, time_to_wait).until(
-                expected_conditions.presence_of_element_located((By.ID, page_id))
-            )
-        except TimeoutException:
-            self.fail("Page took too much time to load!")
 
 
 if __name__ == "__main__":
