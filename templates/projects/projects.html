@@ -7,19 +7,14 @@
 <body>
     <h1 id="title">Projects</h1>
     <ul>
+        {% for project in projects %}
         <section class="project">
-            <li >Power Analyzer</li>
+            <li >{{ project.name }}</li>
             <p>
-                This is a power analyzer system.
+                {{ project.description }}
             </p>
         </section>
-        <section class="project">
-            <li>Skyglover Website</li>
-            <p>
-                This is a website for Skyglover.
-            </p>
-        </section>
-
+        {% endfor %}
     </ul>
 </body>
 </html>
