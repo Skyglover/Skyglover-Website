@@ -1,9 +1,10 @@
 import unittest
+
+import sys
 from selenium import webdriver
-from selenium.common.exceptions import TimeoutException
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.wait import WebDriverWait
+sys.path.append("./functional_tests/util/")
+# noinspection PyUnresolvedReferences
+from util import wait_for_page_to_load_with_id_or_fail
 
 
 class HomePageTest(unittest.TestCase):
@@ -18,13 +19,7 @@ class HomePageTest(unittest.TestCase):
         projects_link = self.browser.find_element_by_id('projects')
         projects_link.click()
 
-        try:
-            WebDriverWait(self.browser, 10).until(
-                expected_conditions.presence_of_element_located((By.ID, 'title'))
-            )
-        except TimeoutException:
-            self.fail("Page took too much time to load!")
-
+        wait_for_page_to_load_with_id_or_fail(self, self.browser, 'title')
         h1 = self.browser.find_element_by_tag_name("h1")
         self.assertEqual('Projects', h1.text)
 
