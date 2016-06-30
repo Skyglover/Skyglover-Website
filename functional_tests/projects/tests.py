@@ -26,7 +26,7 @@ class ProjectsPageTest(unittest.TestCase):
         projects_link = self.browser.find_element_by_id('projects')
         projects_link.click()
 
-        self.wait_for_page_to_load_with_id()
+        self.wait_for_page_to_load_with_id('title')
 
         h1 = self.browser.find_element_by_tag_name("h1")
         self.assertEqual('Projects', h1.text)
@@ -42,10 +42,10 @@ class ProjectsPageTest(unittest.TestCase):
             self.assertEqual(projects[index].name, project_name)
             self.assertEqual(projects[index].description, project_description)
 
-    def wait_for_page_to_load_with_id(self, time_to_wait=10):
+    def wait_for_page_to_load_with_id(self, page_id, time_to_wait=10):
         try:
             WebDriverWait(self.browser, time_to_wait).until(
-                expected_conditions.presence_of_element_located((By.ID, 'title'))
+                expected_conditions.presence_of_element_located((By.ID, page_id))
             )
         except TimeoutException:
             self.fail("Page took too much time to load!")
