@@ -2,7 +2,6 @@ import unittest
 
 import sys
 from selenium import webdriver
-sys.path.append("./functional_tests/util/")
 sys.path.append("./")
 from helper.helper import wait_for_page_to_load_with_id_or_fail
 
