@@ -3,8 +3,8 @@ import unittest
 import sys
 from selenium import webdriver
 sys.path.append("./functional_tests/util/")
-# noinspection PyUnresolvedReferences
-from util import wait_for_page_to_load_with_id_or_fail
+sys.path.append("./")
+from helper.helper import wait_for_page_to_load_with_id_or_fail
 
 
 class HomePageTest(unittest.TestCase):
