@@ -5,13 +5,10 @@ from django import setup
 from selenium import webdriver
 
 sys.path.append("./")
-sys.path.append("./functional_tests/util/")
-
 os.environ["DJANGO_SETTINGS_MODULE"] = "SkygloverWebSite.settings"
 setup()
 from projects.models import Project
-# noinspection PyUnresolvedReferences
-from util import wait_for_page_to_load_with_id_or_fail
+from helper.helper import wait_for_page_to_load_with_id_or_fail
 
 
 class ProjectsPageTest(unittest.TestCase):
