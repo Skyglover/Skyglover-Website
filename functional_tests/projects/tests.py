@@ -1,4 +1,4 @@
-import os, sys, unittest
+import sys, os, unittest
 from django import setup
 from selenium import webdriver
 
