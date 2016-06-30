@@ -34,6 +34,8 @@ class HomePageTest(unittest.TestCase):
 
         projects = self.browser.find_elements_by_class_name('project')
 
+        self.assertEqual(2, len(projects))
+
         for index in range(len(projects)):
             project_title = projects[index].find_element_by_tag_name('li').text
             project_description = projects[index].find_element_by_tag_name('p').text
