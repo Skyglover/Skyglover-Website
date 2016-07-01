@@ -52,8 +52,7 @@ class ProjectsPageTest(unittest.TestCase):
         wait_for_page_to_load_with_id_or_fail(self, self.browser, 'projects_page_title')
 
     def verify_page_title_is_displayed(self, title):
-        h1 = self.browser.find_element_by_tag_name('h1')
-        self.assertEqual(title, h1.text)
+        self.assertEqual(title, self.browser.find_element_by_tag_name('h1').text)
 
 
 if __name__ == "__main__":
