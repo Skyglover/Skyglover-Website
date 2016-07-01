@@ -15,7 +15,7 @@ class Project(models.Model):
     status = models.CharField(max_length=15,
                               choices=STATUS_CHOICES,
                               default='started')
-    start_date = models.DateTimeField(default=timezone.now)
+    start_date = models.DateField(default=timezone.now)
     summary = models.TextField(max_length=500)
     description = models.TextField()
 
