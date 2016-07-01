@@ -19,6 +19,9 @@ class Project(models.Model):
     summary = models.TextField(max_length=500)
     description = models.TextField()
 
+    class Meta:
+        ordering = ('-start_date',)
+
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
         self.slug = slugify(self.name)
         super().save(force_insert, force_update, using, update_fields)
