@@ -45,7 +45,7 @@ class ProjectsPageTest(unittest.TestCase):
     def navigate_to_projects(self):
         projects_link = self.browser.find_element_by_id('projects')
         projects_link.click()
-        wait_for_page_to_load_with_id_or_fail(self, self.browser, 'title')
+        wait_for_page_to_load_with_id_or_fail(self, self.browser, 'projects_page_title')
 
     def verify_page_title_is_displayed(self):
         h1 = self.browser.find_element_by_tag_name("h1")
