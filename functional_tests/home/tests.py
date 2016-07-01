@@ -34,9 +34,12 @@ class HomePageTest(unittest.TestCase):
         self.browser.find_element_by_id('skyglover_description')
 
     def verify_navigation_bar_elements_are_displayed(self):
-        self.browser.find_element_by_id('projects')
-        self.browser.find_element_by_id('team')
-        self.browser.find_element_by_id('about')
+        projects_link = self.browser.find_element_by_id('projects')
+        team_link = self.browser.find_element_by_id('team')
+        about_link = self.browser.find_element_by_id('about')
+        self.assertEqual('Projects', projects_link.text)
+        self.assertEqual('Team', team_link.text)
+        self.assertEqual('About', about_link.text)
 
 
 if __name__ == "__main__":
