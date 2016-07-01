@@ -6,6 +6,7 @@
 </head>
 <body>
     <h1 id="title">Projects</h1>
+    {% if projects %}
     <ul>
         {% for project in projects %}
         <section class="project">
@@ -16,5 +17,12 @@
         </section>
         {% endfor %}
     </ul>
+    {% else %}
+    <aside>
+        <p id="no_projects_label">
+            Currently there are no projects to show.
+        </p>
+    </aside>
+    {% endif %}
 </body>
 </html>
