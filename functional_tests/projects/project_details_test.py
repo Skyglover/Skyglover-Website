@@ -28,8 +28,8 @@ class ProjectDetailsPageTest(unittest.TestCase):
         self.assertEqual(self.project.description, description.text)
 
     def verify_start_date(self):
-        start_date = self.browser.find_element_by_id('start_date')
-        self.assertEqual(self.project.start_date, start_date.text)
+        self.assertEqual('Start date: ' + self.project.get_start_date(),
+                         self.browser.find_element_by_id('start_date').text)
 
     def verify_status(self):
         self.assertEqual('Status: ' + self.project.status,

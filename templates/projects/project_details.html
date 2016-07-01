@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+
+
 <html>
 <head>
     <meta charset="utf-8">
@@ -6,8 +8,11 @@
 </head>
 <body>
     <h1 id="name">{{ project.name }}</h1>
-    <section>
-        <strong id="status">Status: {{ project.status }}</strong>
+    <section id="status">
+        <strong>Status:</strong> {{ project.status }}
+    </section>
+    <section id="start_date">
+        <strong>Start date:</strong> {{ project.start_date|date:"F" }} {{ project.start_date.year }}
     </section>
 </body>
 </html>
