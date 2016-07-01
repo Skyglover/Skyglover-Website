@@ -55,9 +55,9 @@ class ProjectsPageTest(unittest.TestCase):
 
         for index in range(len(projects)):
             project_name = displayed_projects[index].find_element_by_tag_name('li').text
-            project_description = displayed_projects[index].find_element_by_tag_name('p').text
+            project_summary = displayed_projects[index].find_element_by_tag_name('p').text
             self.assertEqual(projects[index].name, project_name)
-            self.assertEqual(projects[index].description, project_description)
+            self.assertEqual(projects[index].summary, project_summary)
 
     def navigate_to_projects(self):
         projects_link = self.browser.find_element_by_id('projects')

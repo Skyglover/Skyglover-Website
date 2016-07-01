@@ -12,7 +12,7 @@ class Project(models.Model):
 
     name = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250, default='', unique=True)
-    description = models.CharField(max_length=500)
+    summary = models.CharField(max_length=500)
     start_date = models.DateTimeField(default=timezone.now)
     status = models.CharField(max_length=15,
                               choices=STATUS_CHOICES,

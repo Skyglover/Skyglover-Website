@@ -9,7 +9,7 @@ from .models import Project
 class ProjectPageTest(TestCase):
     def setUp(self):
         Project.objects.create(name='Power Analyzer', slug='power-analyzer',
-                               description='This is a power analyzer system.')
+                               summary='This is a power analyzer system.')
 
     def tearDown(self):
         Project.objects.all().delete()
