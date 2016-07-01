@@ -6,7 +6,7 @@ from projects.views import projects_page
 
 
 class ProjectPageTest(TestCase):
-    def test_home_page_uses_home_template(self):
+    def test_projects_page_uses_projects_template(self):
         request = HttpRequest()
         response = projects_page(request)
         expected_content = render_to_string('projects/projects.html')
