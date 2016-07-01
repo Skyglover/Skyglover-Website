@@ -20,16 +20,7 @@ class ProjectsPageTest(unittest.TestCase):
     def test_projects_are_displayed(self):
         self.navigate_to_projects()
         self.verify_page_title_is_displayed()
-        projects = Project.objects.all()
-        displayed_projects = self.browser.find_elements_by_class_name('project')
-
-        self.assertEqual(len(projects), len(displayed_projects))
-
-        for index in range(len(projects)):
-            project_name = displayed_projects[index].find_element_by_tag_name('li').text
-            project_description = displayed_projects[index].find_element_by_tag_name('p').text
-            self.assertEqual(projects[index].name, project_name)
-            self.assertEqual(projects[index].description, project_description)
+        self.verify_projects_are_displayed()
 
     def test_label_is_displayed_when_no_projects_available(self):
         projects = Project.objects.all()
@@ -41,6 +32,16 @@ class ProjectsPageTest(unittest.TestCase):
 
         for project in projects_copy:
             project.save()
+
+    def verify_projects_are_displayed(self):
+        projects = Project.objects.all()
+        displayed_projects = self.browser.find_elements_by_class_name('project')
+        self.assertEqual(len(projects), len(displayed_projects))
+        for index in range(len(projects)):
+            project_name = displayed_projects[index].find_element_by_tag_name('li').text
+            project_description = displayed_projects[index].find_element_by_tag_name('p').text
+            self.assertEqual(projects[index].name, project_name)
+            self.assertEqual(projects[index].description, project_description)
 
     def navigate_to_projects(self):
         projects_link = self.browser.find_element_by_id('projects')
