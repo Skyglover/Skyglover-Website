@@ -36,12 +36,11 @@ class ProjectsPageTest(unittest.TestCase):
         projects_copy = list(projects)
         projects.delete()
         self.navigate_to_projects()
-        try:
-            label = self.browser.find_element_by_id('no_projects_label')
-            self.assertEquals('Currently there are no projects to show.', label.text)
-        finally:
-            for project in projects_copy:
-                project.save()
+        label = self.browser.find_element_by_id('no_projects_label')
+        self.assertEquals('Currently there are no projects to show.', label.text)
+
+        for project in projects_copy:
+            project.save()
 
     def navigate_to_projects(self):
         projects_link = self.browser.find_element_by_id('projects')
