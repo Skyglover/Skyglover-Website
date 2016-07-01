@@ -7,6 +7,7 @@ os.environ["DJANGO_SETTINGS_MODULE"] = "SkygloverWebSite.settings"
 setup()
 from projects.models import Project
 
+
 class ProjectDetailsPageTest(unittest.TestCase):
     def setUp(self):
         self.browser = webdriver.Chrome('/home/m/chromedriver')
@@ -17,8 +18,25 @@ class ProjectDetailsPageTest(unittest.TestCase):
         self.browser.quit()
 
     def test_project_details_are_displayed(self):
-        #TODO: title, status, start_date, long_description are displayed
-        self.fail('Finish test')
+        self.verify_project_name()
+        self.verify_status()
+        self.verify_start_date()
+        self.verify_description()
+
+    def verify_description(self):
+        description = self.browser.find_element_by_id('description')
+        self.assertEqual(self.project.description, description.text)
+
+    def verify_start_date(self):
+        start_date = self.browser.find_element_by_id('start_date')
+        self.assertEqual(self.project.start_date, start_date.text)
+
+    def verify_status(self):
+        self.assertEqual('Status: ' + self.project.status,
+                         self.browser.find_element_by_id('status').text)
+
+    def verify_project_name(self):
+        self.assertEqual(self.project.name, self.browser.find_element_by_id('name').text)
 
 
 if __name__ == "__main__":
