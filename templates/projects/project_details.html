@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{{ project.name }}</title>
+</head>
+<body>
+    <h1 id="name">{{ project.name }}</h1>
+    <section id="status">
+        <strong>Status:</strong> {{ project.status }}
+    </section>
+    <section id="start_date">
+        <strong>Start date:</strong> {{ project.start_date|date:"F" }} {{ project.start_date.year }}
+    </section>
+    <section id="description">
+        <p>
+            {{ project.description }}
+        </p>
+    </section>
+</body>
+</html>

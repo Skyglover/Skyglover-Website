@@ -5,14 +5,14 @@
     <title>Projects</title>
 </head>
 <body>
-    <h1 id="title">Projects</h1>
+    <h1 id="projects_page_title">Projects</h1>
     {% if projects %}
     <ul>
         {% for project in projects %}
         <section class="project">
-            <li >{{ project.name }}</li>
+            <li ><a href="{% url 'project_details' project.slug %}">{{ project.name }}</a></li>
             <p>
-                {{ project.description }}
+                {{ project.summary }}
             </p>
         </section>
         {% endfor %}
