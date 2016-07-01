@@ -35,6 +35,12 @@ class ProjectsPageTest(unittest.TestCase):
         for project in projects_copy:
             project.save()
 
+    def test_project_details_page_can_be_accessed_from_home_page(self):
+        self.navigate_to_projects()
+        first_displayed_project = self.browser.find_elements_by_tag_name('a')[0]
+        first_displayed_project.click()
+        wait_for_page_to_load_with_id_or_fail(self, self.browser, 'project_details_title')
+
     def verify_projects_are_displayed(self):
         projects = Project.objects.all()
         displayed_projects = self.browser.find_elements_by_class_name('project')
