@@ -26,6 +26,7 @@ class ProjectsPageTest(unittest.TestCase):
         projects = Project.objects.all()
         projects_copy = list(projects)
         projects.delete()
+
         self.navigate_to_projects()
         label = self.browser.find_element_by_id('no_projects_label')
         self.assertEquals('Currently there are no projects to show.', label.text)
@@ -36,7 +37,9 @@ class ProjectsPageTest(unittest.TestCase):
     def verify_projects_are_displayed(self):
         projects = Project.objects.all()
         displayed_projects = self.browser.find_elements_by_class_name('project')
+
         self.assertEqual(len(projects), len(displayed_projects))
+
         for index in range(len(projects)):
             project_name = displayed_projects[index].find_element_by_tag_name('li').text
             project_description = displayed_projects[index].find_element_by_tag_name('p').text
@@ -49,7 +52,7 @@ class ProjectsPageTest(unittest.TestCase):
         wait_for_page_to_load_with_id_or_fail(self, self.browser, 'projects_page_title')
 
     def verify_page_title_is_displayed(self):
-        h1 = self.browser.find_element_by_tag_name("h1")
+        h1 = self.browser.find_element_by_tag_name('h1')
         self.assertEqual('Projects', h1.text)
 
 
