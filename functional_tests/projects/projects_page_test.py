@@ -42,7 +42,7 @@ class ProjectsPageTest(unittest.TestCase):
     def test_project_details_page_can_be_accessed_from_home_page(self):
         first_displayed_project = self.browser.find_elements_by_tag_name('a')[0]
         first_displayed_project.click()
-        wait_for_page_to_load_with_id_or_fail(self, self.browser, 'project_details_title')
+        wait_for_page_to_load_with_id_or_fail(self, self.browser, 'name')
 
     def verify_projects_title_is_displayed(self):
         verify_page_h1_is_displayed(self, self.browser, 'Projects')
