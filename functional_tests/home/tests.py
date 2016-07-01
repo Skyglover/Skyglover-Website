@@ -27,11 +27,15 @@ class HomePageTest(unittest.TestCase):
         self.verify_get_in_touch_is_displayed()
 
     def verify_get_in_touch_is_displayed(self):
-        self.browser.find_element_by_id('get_in_touch')
+        get_in_touch = self.browser.find_element_by_id('get_in_touch')
+        self.assertEqual('Get in touch', get_in_touch.text)
 
     def verify_skyglover_name_and_description_are_displayed(self):
-        self.browser.find_element_by_id('skyglover_name')
-        self.browser.find_element_by_id('skyglover_description')
+        skyglover_name = self.browser.find_element_by_id('skyglover_name')
+        skyglover_description = self.browser.find_element_by_id('skyglover_description')
+        self.assertEqual('skyglover', skyglover_name.text)
+        self.assertEqual('We are a video game and mobile application company.',
+                         skyglover_description.text)
 
     def verify_navigation_bar_elements_are_displayed(self):
         projects_link = self.browser.find_element_by_id('projects')
