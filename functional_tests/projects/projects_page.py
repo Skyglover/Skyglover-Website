@@ -19,7 +19,7 @@ class ProjectsPageTest(unittest.TestCase):
 
     def test_projects_are_displayed(self):
         self.navigate_to_projects()
-        self.verify_page_title_is_displayed()
+        self.verify_page_title_is_displayed('Projects')
         self.verify_projects_are_displayed()
 
     def test_label_is_displayed_when_no_projects_available(self):
@@ -51,9 +51,9 @@ class ProjectsPageTest(unittest.TestCase):
         projects_link.click()
         wait_for_page_to_load_with_id_or_fail(self, self.browser, 'projects_page_title')
 
-    def verify_page_title_is_displayed(self):
+    def verify_page_title_is_displayed(self, title):
         h1 = self.browser.find_element_by_tag_name('h1')
-        self.assertEqual('Projects', h1.text)
+        self.assertEqual(title, h1.text)
 
 
 if __name__ == "__main__":
