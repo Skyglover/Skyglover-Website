@@ -12,11 +12,12 @@ class Project(models.Model):
 
     name = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250, default='', unique=True)
-    summary = models.TextField(max_length=500)
-    start_date = models.DateTimeField(default=timezone.now)
     status = models.CharField(max_length=15,
                               choices=STATUS_CHOICES,
                               default='started')
+    start_date = models.DateTimeField(default=timezone.now)
+    summary = models.TextField(max_length=500)
+    description = models.TextField()
 
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
         self.slug = slugify(self.name)
