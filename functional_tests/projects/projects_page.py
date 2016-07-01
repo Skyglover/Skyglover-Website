@@ -6,7 +6,7 @@ sys.path.append("./")
 os.environ["DJANGO_SETTINGS_MODULE"] = "SkygloverWebSite.settings"
 setup()
 from projects.models import Project
-from helper.helper import wait_for_page_to_load_with_id_or_fail
+from helper.helper import wait_for_page_to_load_with_tag_name_or_fail
 
 
 class ProjectsPageTest(unittest.TestCase):
@@ -45,7 +45,7 @@ class ProjectsPageTest(unittest.TestCase):
     def navigate_to_projects(self):
         projects_link = self.browser.find_element_by_id('projects')
         projects_link.click()
-        wait_for_page_to_load_with_id_or_fail(self, self.browser, 'title')
+        wait_for_page_to_load_with_tag_name_or_fail(self, self.browser, 'title')
 
     def verify_page_title_is_displayed(self):
         h1 = self.browser.find_element_by_tag_name("h1")

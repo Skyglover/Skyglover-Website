@@ -1,7 +1,7 @@
 import sys, unittest
 from selenium import webdriver
 sys.path.append("./")
-from helper.helper import wait_for_page_to_load_with_id_or_fail
+from helper.helper import wait_for_page_to_load_with_tag_name_or_fail
 
 
 class HomePageTest(unittest.TestCase):
@@ -16,7 +16,7 @@ class HomePageTest(unittest.TestCase):
         projects_link = self.browser.find_element_by_id('projects')
         projects_link.click()
 
-        wait_for_page_to_load_with_id_or_fail(self, self.browser, 'title')
+        wait_for_page_to_load_with_tag_name_or_fail(self, self.browser, 'title')
         h1 = self.browser.find_element_by_tag_name("h1")
         self.assertEqual('Projects', h1.text)
 
