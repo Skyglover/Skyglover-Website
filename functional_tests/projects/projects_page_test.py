@@ -22,10 +22,11 @@ class ProjectsPageTest(unittest.TestCase):
         self.browser.quit()
 
     def test_projects_are_displayed(self):
-        verify_page_h1_is_displayed(self, self.browser, 'Projects')
+        self.verify_projects_title_is_displayed()
         self.verify_projects_are_displayed()
 
     def test_label_is_displayed_when_no_projects_available(self):
+        self.verify_projects_title_is_displayed()
         projects = Project.objects.all()
         projects_copy = list(projects)
         projects.delete()
@@ -42,6 +43,9 @@ class ProjectsPageTest(unittest.TestCase):
         first_displayed_project = self.browser.find_elements_by_tag_name('a')[0]
         first_displayed_project.click()
         wait_for_page_to_load_with_id_or_fail(self, self.browser, 'project_details_title')
+
+    def verify_projects_title_is_displayed(self):
+        verify_page_h1_is_displayed(self, self.browser, 'Projects')
 
     def verify_projects_are_displayed(self):
         projects = Project.objects.all()
