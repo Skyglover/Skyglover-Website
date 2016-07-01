@@ -7,6 +7,7 @@ os.environ["DJANGO_SETTINGS_MODULE"] = "SkygloverWebSite.settings"
 setup()
 from projects.models import Project
 from helper.helper import wait_for_page_to_load_with_id_or_fail
+from helper.helper import verify_page_h1_is_displayed
 
 
 class ProjectsPageTest(unittest.TestCase):
@@ -19,7 +20,7 @@ class ProjectsPageTest(unittest.TestCase):
 
     def test_projects_are_displayed(self):
         self.navigate_to_projects()
-        self.verify_page_title_is_displayed('Projects')
+        verify_page_h1_is_displayed(self, self.browser, 'Projects')
         self.verify_projects_are_displayed()
 
     def test_label_is_displayed_when_no_projects_available(self):
@@ -50,9 +51,6 @@ class ProjectsPageTest(unittest.TestCase):
         projects_link = self.browser.find_element_by_id('projects')
         projects_link.click()
         wait_for_page_to_load_with_id_or_fail(self, self.browser, 'projects_page_title')
-
-    def verify_page_title_is_displayed(self, title):
-        self.assertEqual(title, self.browser.find_element_by_tag_name('h1').text)
 
 
 if __name__ == "__main__":
