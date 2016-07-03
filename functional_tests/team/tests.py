@@ -1,7 +1,12 @@
+import os
 import sys, unittest
+
+from django import setup
 from selenium import webdriver
 
 sys.path.append("./")
+os.environ["DJANGO_SETTINGS_MODULE"] = "SkygloverWebSite.settings"
+setup()
 from helper.helper import verify_page_h1_is_displayed
 from team.models import Member
 
@@ -28,8 +33,6 @@ class TeamPageTest(unittest.TestCase):
             self.assertEqual(members[index].name, member_name)
             self.assertEqual(members[index].position, member_position)
             self.assertEqual(members[index].information, member_information)
-
-        self.fail('Finish test')
 
 
 if __name__ == "__main__":

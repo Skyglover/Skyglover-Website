@@ -2,4 +2,15 @@
 {% block title %}Team{% endblock %}
 {% block content %}
     <h1 id="team_page_title">Team</h1>
+    <main>
+    {% for member in members %}
+        <section class="member">
+            <h2>{{ member.name }}</h2>
+            <h3>{{ member.position }}</h3>
+            <p>
+                {{ member.information }}
+            </p>
+        </section>
+    {% endfor %}
+    </main>
 {% endblock %}

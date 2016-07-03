@@ -1,5 +1,10 @@
 from django.shortcuts import render
 
+from team.models import Member
+
 
 def team_page(request):
-    return render(request, 'team/team.html')
+    members = Member.objects.all()
+    return render(request, 'team/team.html', {
+        'members': members,
+    })
