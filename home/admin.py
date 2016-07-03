@@ -7,4 +7,4 @@ class SomeTextAdmin(admin.ModelAdmin):
     list_display = ('identifier', 'text')
 
 
-admin.site.register(SomeText)
+admin.site.register(SomeText, SomeTextAdmin)
