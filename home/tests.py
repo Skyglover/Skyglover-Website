@@ -4,6 +4,7 @@ from django.test import TestCase
 
 from home.views import home_page
 from home.views import about_page
+from home.views import get_in_touch_page
 
 
 class HomePageTest(TestCase):
@@ -21,6 +22,16 @@ class HomePageTest(TestCase):
         request = HttpRequest()
         response = about_page(request)
         expected_content = render_to_string('static_pages/about.html')
+
+        self.assertEqual(
+            expected_content,
+            response.content.decode()
+        )
+
+    def test_get_in_touch_page_uses_get_in_touch_template(self):
+        request = HttpRequest()
+        response = get_in_touch_page(request)
+        expected_content = render_to_string('static_pages/get_in_touch.html')
 
         self.assertEqual(
             expected_content,

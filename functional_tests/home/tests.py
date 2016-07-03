@@ -30,6 +30,10 @@ class HomePageTest(unittest.TestCase):
         self.click_on_link_with_id('about')
         wait_for_page_to_load_with_id_or_fail(self, self.browser, 'about_page_title')
 
+    def test_get_in_touch_page_can_be_access_from_home_page(self):
+        self.click_on_link_with_id('get_in_touch')
+        wait_for_page_to_load_with_id_or_fail(self, self.browser, 'get_in_touch_page_title')
+
     def click_on_link_with_id(self, link_id):
         projects_link = self.browser.find_element_by_id(link_id)
         projects_link.click()
