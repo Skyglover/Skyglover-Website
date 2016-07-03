@@ -26,7 +26,7 @@ class AboutPageTest(unittest.TestCase):
         self.verify_about_information_is_displayed()
 
     def verify_about_information_is_displayed(self):
-        about_information = SomeText.objects.all().get(identifier='about_info')
+        about_information = SomeText.objects.all().get(identifier='about_info').text
         about_information_displayed = self.browser.find_element_by_tag_name('p')
         self.assertEqual(about_information, about_information_displayed.text)
 
