@@ -2,6 +2,7 @@ from django.http import HttpRequest
 from django.template.loader import render_to_string
 from django.test import TestCase
 
+from home.models import SomeText
 from home.views import home_page
 from home.views import about_page
 from home.views import get_in_touch_page
@@ -19,9 +20,12 @@ class HomePageTest(TestCase):
         )
 
     def test_about_page_uses_about_template(self):
+        SomeText.objects.create(identifier='about_info', text='Some random text')
         request = HttpRequest()
         response = about_page(request)
-        expected_content = render_to_string('static_pages/about.html')
+        expected_content = render_to_string('static_pages/about.html', {
+            'about_information': SomeText.objects.get(identifier='about_info').text,
+        })
 
         self.assertEqual(
             expected_content,
