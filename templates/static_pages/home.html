@@ -6,7 +6,7 @@
             <ul>
                 <li><a id="projects" href="{% url 'projects' %}">Projects</a></li>
                 <li><a id="team" href="{% url 'team'%}">Team</a></li>
-                <li id="about">About</li>
+                <li><a id="about" href="{% url 'about' %}">About</a></li>
             </ul>
         </nav>
     </header>
@@ -17,8 +17,6 @@
         </p>
     </main>
     <footer>
-        <p id="get_in_touch">
-            Get in touch
-        </p>
+            <a id="get_in_touch" href="{% url 'get_in_touch' %}">Get in touch</a>
     </footer>
 {% endblock %}

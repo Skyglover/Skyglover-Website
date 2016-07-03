@@ -3,7 +3,6 @@ from selenium import webdriver
 
 sys.path.append("./")
 from helper.helper import wait_for_page_to_load_with_id_or_fail
-from helper.helper import verify_page_h1_is_displayed
 
 
 class HomePageTest(unittest.TestCase):
@@ -20,14 +19,24 @@ class HomePageTest(unittest.TestCase):
         self.verify_get_in_touch_is_displayed()
 
     def test_projects_page_can_be_accessed_from_home_page(self):
-        projects_link = self.browser.find_element_by_id('projects')
-        projects_link.click()
+        self.click_on_link_with_id('projects')
         wait_for_page_to_load_with_id_or_fail(self, self.browser, 'projects_page_title')
 
     def test_team_page_can_be_accessed_from_home_page(self):
-        projects_link = self.browser.find_element_by_id('team')
-        projects_link.click()
+        self.click_on_link_with_id('team')
         wait_for_page_to_load_with_id_or_fail(self, self.browser, 'team_page_title')
+
+    def test_about_page_can_be_access_from_home_page(self):
+        self.click_on_link_with_id('about')
+        wait_for_page_to_load_with_id_or_fail(self, self.browser, 'about_page_title')
+
+    def test_get_in_touch_page_can_be_access_from_home_page(self):
+        self.click_on_link_with_id('get_in_touch')
+        wait_for_page_to_load_with_id_or_fail(self, self.browser, 'get_in_touch_page_title')
+
+    def click_on_link_with_id(self, link_id):
+        projects_link = self.browser.find_element_by_id(link_id)
+        projects_link.click()
 
     def verify_get_in_touch_is_displayed(self):
         get_in_touch = self.browser.find_element_by_id('get_in_touch')

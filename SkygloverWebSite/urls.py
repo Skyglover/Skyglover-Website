@@ -16,15 +16,18 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from home.views import home_page
+from home.views import about_page
+from home.views import get_in_touch_page
 from projects.views import projects_page
 from projects.views import project_details_page
 from team.views import team_page
-
 
 urlpatterns = [
     url(r'^$', home_page, name='home'),
     url(r'^projects/$', projects_page, name='projects'),
     url(r'^projects/(?P<project_name_slug>[-\w]+)/$', project_details_page, name='project_details'),
     url(r'^team/$', team_page, name='team'),
+    url(r'^about/$', about_page, name='about'),
+    url(r'^get-in-touch/$', get_in_touch_page, name='get_in_touch'),
     url(r'^admin/', include(admin.site.urls)),
 ]
