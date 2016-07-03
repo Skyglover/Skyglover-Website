@@ -1,16 +1,10 @@
-import os
+import sys
 import unittest
 
-import sys
-
-from django import setup
 from selenium import webdriver
 
 sys.path.append("./")
-os.environ["DJANGO_SETTINGS_MODULE"] = "SkygloverWebSite.settings"
-setup()
 from helper.helper import verify_page_h1_is_displayed
-from home.models import SomeText
 
 
 class GetInTouchPageTest(unittest.TestCase):
@@ -31,7 +25,6 @@ class GetInTouchPageTest(unittest.TestCase):
         self.assertEqual('Github', github)
         self.assertEqual('Email', email)
         self.assertEqual('Quito, Ecuador', address)
-
 
 
 if __name__ == "__main__":
