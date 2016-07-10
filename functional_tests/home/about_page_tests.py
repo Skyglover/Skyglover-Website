@@ -7,11 +7,6 @@ from home.models import SomeText
 
 class AboutPageTest(LiveServerTestCase):
 
-    def __init__(self, *args, **kwargs):
-        super(LiveServerTestCase, self).__init__(*args, **kwargs)
-        if not settings.DEBUG:
-            settings.DEBUG = True
-
     def setUp(self):
         SomeText.objects.create(identifier='about_info', text='We are Skyglover')
         self.browser = webdriver.Chrome()
