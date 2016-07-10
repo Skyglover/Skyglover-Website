@@ -15,7 +15,7 @@ class AboutPageTest(LiveServerTestCase):
     def setUp(self):
         SomeText.objects.create(identifier='about_info', text='We are Skyglover')
         self.browser = webdriver.Chrome()
-        self.browser.get('%s%s' % (self.live_server_url, '/about/'))
+        self.browser.get(self.live_server_url + '/about/')
 
     def tearDown(self):
         self.browser.quit()
