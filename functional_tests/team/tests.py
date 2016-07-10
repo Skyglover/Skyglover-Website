@@ -1,23 +1,23 @@
-import os
-import sys, unittest
-
-from django import setup
+from django.test import LiveServerTestCase
 from selenium import webdriver
 
-sys.path.append("./")
-os.environ["DJANGO_SETTINGS_MODULE"] = "SkygloverWebSite.settings"
-setup()
 from helper.helper import verify_page_h1_is_displayed
 from team.models import Member
 
 
-class TeamPageTest(unittest.TestCase):
+class TeamPageTest(LiveServerTestCase):
     def setUp(self):
-        self.browser = webdriver.Chrome('/home/m/chromedriver')
-        self.browser.get('http://localhost:8000/team/')
+        self.browser = webdriver.Chrome()
+        Member.objects.create(
+            name='M',
+            position='Developer',
+            information='I love mathematics and computer science.'
+        )
+        self.browser.get(self.live_server_url + '/team/')
 
     def tearDown(self):
         self.browser.quit()
+        Member.objects.all().delete()
 
     def test_team_page_elements_are_displayed(self):
         verify_page_h1_is_displayed(self, self.browser, 'Team')
@@ -33,7 +33,3 @@ class TeamPageTest(unittest.TestCase):
             self.assertEqual(members[index].name, member_name)
             self.assertEqual(members[index].position, member_position)
             self.assertEqual(members[index].information, member_information)
-
-
-if __name__ == "__main__":
-    unittest.main(warnings='ignore')

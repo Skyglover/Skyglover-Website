@@ -1,14 +1,13 @@
-import sys, unittest
+from django.test import LiveServerTestCase
 from selenium import webdriver
+from helper.helper import verify_page_h1_is_displayed, wait_for_page_to_load_with_id_or_fail
+from home.models import SomeText
 
-sys.path.append("./")
-from helper.helper import wait_for_page_to_load_with_id_or_fail
 
-
-class HomePageTest(unittest.TestCase):
+class HomePageTest(LiveServerTestCase):
     def setUp(self):
-        self.browser = webdriver.Chrome('/home/m/chromedriver')
-        self.browser.get('http://localhost:8000')
+        self.browser = webdriver.Chrome()
+        self.browser.get(self.live_server_url)
 
     def tearDown(self):
         self.browser.quit()
@@ -27,6 +26,7 @@ class HomePageTest(unittest.TestCase):
         wait_for_page_to_load_with_id_or_fail(self, self.browser, 'team_page_title')
 
     def test_about_page_can_be_access_from_home_page(self):
+        SomeText.objects.create(identifier='about_info', text='We are Skyglover')
         self.click_on_link_with_id('about')
         wait_for_page_to_load_with_id_or_fail(self, self.browser, 'about_page_title')
 
@@ -58,5 +58,40 @@ class HomePageTest(unittest.TestCase):
         self.assertEqual('About', about_link.text)
 
 
-if __name__ == "__main__":
-    unittest.main(warnings='ignore')
+class AboutPageTest(LiveServerTestCase):
+    def setUp(self):
+        SomeText.objects.create(identifier='about_info', text='We are Skyglover')
+        self.browser = webdriver.Chrome()
+        self.browser.get(self.live_server_url + '/about/')
+
+    def tearDown(self):
+        self.browser.quit()
+
+    def test_about_page_elements_are_displayed(self):
+        verify_page_h1_is_displayed(self, self.browser, 'About')
+        self.verify_about_information_is_displayed()
+
+    def verify_about_information_is_displayed(self):
+        about_information = SomeText.objects.all().get(identifier='about_info').text
+        about_information_displayed = self.browser.find_element_by_tag_name('p')
+        self.assertEqual(about_information, about_information_displayed.text)
+
+
+class GetInTouchPageTest(LiveServerTestCase):
+    def setUp(self):
+        self.browser = webdriver.Chrome()
+        self.browser.get(self.live_server_url + '/get-in-touch/')
+
+    def tearDown(self):
+        self.browser.quit()
+
+    def test_get_in_touch_page_elements_are_displayed(self):
+        verify_page_h1_is_displayed(self, self.browser, 'Get In Touch')
+        twitter = self.browser.find_element_by_id('twitter').text
+        github = self.browser.find_element_by_id('github').text
+        email = self.browser.find_element_by_id('email').text
+        address = self.browser.find_element_by_tag_name('footer').text
+        self.assertEqual('Twitter', twitter)
+        self.assertEqual('Github', github)
+        self.assertEqual('Email', email)
+        self.assertEqual('Quito, Ecuador', address)
