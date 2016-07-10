@@ -30,7 +30,3 @@ class AboutPageTest(LiveServerTestCase):
         about_information = SomeText.objects.all().get(identifier='about_info').text
         about_information_displayed = self.browser.find_element_by_tag_name('p')
         self.assertEqual(about_information, about_information_displayed.text)
-
-
-if __name__ == "__main__":
-    unittest.main(warnings='ignore')
