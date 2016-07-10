@@ -1,16 +1,12 @@
-import sys, os, unittest
-from django import setup
+from django.test import LiveServerTestCase
 from selenium import webdriver
 
-sys.path.append("./")
-os.environ["DJANGO_SETTINGS_MODULE"] = "SkygloverWebSite.settings"
-setup()
 from projects.models import Project
 from helper.helper import wait_for_page_to_load_with_id_or_fail
 from helper.helper import verify_page_h1_is_displayed
 
 
-class ProjectsPageTest(unittest.TestCase):
+class ProjectsPageTest(LiveServerTestCase):
     def setUp(self):
         self.browser = webdriver.Chrome('/home/m/chromedriver')
         self.go_to_projects()
@@ -63,7 +59,3 @@ class ProjectsPageTest(unittest.TestCase):
         projects_link = self.browser.find_element_by_id('projects')
         projects_link.click()
         wait_for_page_to_load_with_id_or_fail(self, self.browser, 'projects_page_title')
-
-
-if __name__ == "__main__":
-    unittest.main(warnings='ignore')
