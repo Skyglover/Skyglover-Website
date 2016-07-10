@@ -1,4 +1,3 @@
-from django.conf import settings
 from django.test import LiveServerTestCase
 from selenium import webdriver
 from helper.helper import verify_page_h1_is_displayed
