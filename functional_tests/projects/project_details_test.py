@@ -1,18 +1,20 @@
-import sys, os, unittest
-from django import setup
+from django.test import LiveServerTestCase
 from selenium import webdriver
 
-sys.path.append("./")
-os.environ["DJANGO_SETTINGS_MODULE"] = "SkygloverWebSite.settings"
-setup()
 from projects.models import Project
 
 
-class ProjectDetailsPageTest(unittest.TestCase):
+class ProjectDetailsPageTest(LiveServerTestCase):
+
     def setUp(self):
-        self.browser = webdriver.Chrome('/home/m/chromedriver')
+        self.browser = webdriver.Chrome()
+        Project.objects.create(
+            name='project1',
+            summary='This is a fucking summary',
+            description='This is a really short description.'
+        )
         self.project = Project.objects.all()[0]
-        self.browser.get('http://localhost:8000/projects/' + self.project.slug + '/')
+        self.browser.get(self.live_server_url + '/projects/' + self.project.slug + '/')
 
     def tearDown(self):
         self.browser.quit()
@@ -37,7 +39,3 @@ class ProjectDetailsPageTest(unittest.TestCase):
 
     def verify_project_name(self):
         self.assertEqual(self.project.name, self.browser.find_element_by_id('name').text)
-
-
-if __name__ == "__main__":
-    unittest.main(warnings='ignore')
