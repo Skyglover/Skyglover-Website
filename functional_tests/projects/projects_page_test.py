@@ -12,7 +12,7 @@ class ProjectsPageTest(LiveServerTestCase):
         self.go_to_projects()
 
     def go_to_projects(self):
-        self.browser.get('http://localhost:8000/projects/')
+        self.browser.get(self.live_server_url + '/projects/')
 
     def tearDown(self):
         self.browser.quit()
