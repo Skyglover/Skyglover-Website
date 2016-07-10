@@ -8,7 +8,7 @@ from helper.helper import verify_page_h1_is_displayed
 
 class ProjectsPageTest(LiveServerTestCase):
     def setUp(self):
-        self.browser = webdriver.Chrome('/home/m/chromedriver')
+        self.browser = webdriver.Chrome()
         self.go_to_projects()
 
     def go_to_projects(self):
