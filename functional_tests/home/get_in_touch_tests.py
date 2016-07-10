@@ -1,16 +1,12 @@
-import sys
-import unittest
-
+from django.test import LiveServerTestCase
 from selenium import webdriver
-
-sys.path.append("./")
 from helper.helper import verify_page_h1_is_displayed
 
 
-class GetInTouchPageTest(unittest.TestCase):
+class GetInTouchPageTest(LiveServerTestCase):
     def setUp(self):
-        self.browser = webdriver.Chrome('/home/m/chromedriver')
-        self.browser.get('http://localhost:8000/get-in-touch/')
+        self.browser = webdriver.Chrome()
+        self.browser.get(self.live_server_url + '/get-in-touch/')
 
     def tearDown(self):
         self.browser.quit()
@@ -25,7 +21,3 @@ class GetInTouchPageTest(unittest.TestCase):
         self.assertEqual('Github', github)
         self.assertEqual('Email', email)
         self.assertEqual('Quito, Ecuador', address)
-
-
-if __name__ == "__main__":
-    unittest.main(warnings='ignore')
