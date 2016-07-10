@@ -1,14 +1,13 @@
-import sys, unittest
+from django.test import LiveServerTestCase
 from selenium import webdriver
-
-sys.path.append("./")
 from helper.helper import wait_for_page_to_load_with_id_or_fail
+from home.models import SomeText
 
 
-class HomePageTest(unittest.TestCase):
+class HomePageTest(LiveServerTestCase):
     def setUp(self):
-        self.browser = webdriver.Chrome('/home/m/chromedriver')
-        self.browser.get('http://localhost:8000')
+        self.browser = webdriver.Chrome()
+        self.browser.get(self.live_server_url)
 
     def tearDown(self):
         self.browser.quit()
@@ -27,6 +26,7 @@ class HomePageTest(unittest.TestCase):
         wait_for_page_to_load_with_id_or_fail(self, self.browser, 'team_page_title')
 
     def test_about_page_can_be_access_from_home_page(self):
+        SomeText.objects.create(identifier='about_info', text='We are Skyglover')
         self.click_on_link_with_id('about')
         wait_for_page_to_load_with_id_or_fail(self, self.browser, 'about_page_title')
 
@@ -56,7 +56,3 @@ class HomePageTest(unittest.TestCase):
         self.assertEqual('Projects', projects_link.text)
         self.assertEqual('Team', team_link.text)
         self.assertEqual('About', about_link.text)
-
-
-if __name__ == "__main__":
-    unittest.main(warnings='ignore')
