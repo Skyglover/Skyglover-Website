@@ -1,22 +1,23 @@
-import os
 import unittest
 
-import sys
-
-from django import setup
+from django.conf import settings
+from django.test import LiveServerTestCase
 from selenium import webdriver
-
-sys.path.append("./")
-os.environ["DJANGO_SETTINGS_MODULE"] = "SkygloverWebSite.settings"
-setup()
 from helper.helper import verify_page_h1_is_displayed
 from home.models import SomeText
 
 
-class AboutPageTest(unittest.TestCase):
+class AboutPageTest(LiveServerTestCase):
+
+    def __init__(self, *args, **kwargs):
+        super(LiveServerTestCase, self).__init__(*args, **kwargs)
+        if not settings.DEBUG:
+            settings.DEBUG = True
+
     def setUp(self):
-        self.browser = webdriver.Chrome('/home/m/chromedriver')
-        self.browser.get('http://localhost:8000/about/')
+        SomeText.objects.create(identifier='about_info', text='We are Skyglover')
+        self.browser = webdriver.Chrome()
+        self.browser.get('%s%s' % (self.live_server_url, '/about/'))
 
     def tearDown(self):
         self.browser.quit()
