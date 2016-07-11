@@ -11,15 +11,16 @@ class HomePageTest(TestCase):
         found = resolve('/')
         self.assertEqual(found.func, home_page)
 
+    def assertPathUsesTemplate(self, path, template):
+        response = self.client.get(path)
+        self.assertTemplateUsed(response, template)
+
     def test_home_page_uses_home_template(self):
-        response = self.client.get('/')
-        self.assertTemplateUsed(response, 'static_pages/home.html')
+        self.assertPathUsesTemplate('/', 'static_pages/home.html')
 
     def test_about_page_uses_about_template(self):
         SomeText.objects.create(identifier='about_info', text='Some random text')
-        response = self.client.get('/about/')
-        self.assertTemplateUsed(response, 'static_pages/about.html')
+        self.assertPathUsesTemplate('/about/', 'static_pages/about.html')
 
     def test_get_in_touch_page_uses_get_in_touch_template(self):
-        response = self.client.get('/get-in-touch/')
-        self.assertTemplateUsed(response, 'static_pages/get_in_touch.html')
+        self.assertPathUsesTemplate('/get-in-touch/', 'static_pages/get_in_touch.html')
