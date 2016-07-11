@@ -15,26 +15,9 @@ class ProjectPageTest(TestCase):
         Project.objects.all().delete()
 
     def test_projects_page_uses_projects_template(self):
-        request = HttpRequest()
-        response = projects_page(request)
-        expected_content = render_to_string('projects/projects.html', {
-            'projects': Project.objects.all(),
-        })
-
-        self.assertEqual(
-            expected_content,
-            response.content.decode()
-        )
+        response = self.client.get('/projects/')
+        self.assertTemplateUsed(response, 'projects/projects.html')
 
     def test_project_details_page_uses_project_details_template(self):
-        project = Project.objects.all()[0]
-        request = HttpRequest()
-        response = project_details_page(request, project.slug)
-        expected_content = render_to_string('projects/project_details.html', {
-            'project': project,
-        })
-
-        self.assertEqual(
-            expected_content,
-            response.content.decode()
-        )
+        response = self.client.get('/projects/' + Project.objects.first().slug + '/')
+        self.assertTemplateUsed(response, 'projects/project_details.html')
