@@ -1,8 +1,4 @@
-from django.http import HttpRequest
-from django.template.loader import render_to_string
 from django.test import TestCase
-from projects.views import projects_page
-from projects.views import project_details_page
 from .models import Project
 
 
