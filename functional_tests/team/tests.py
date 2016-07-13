@@ -1,11 +1,11 @@
-from django.test import LiveServerTestCase
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
 
 from helper.helper import verify_page_h1_is_displayed
 from team.models import Member
 
 
-class TeamPageTest(LiveServerTestCase):
+class TeamPageTest(StaticLiveServerTestCase):
     def setUp(self):
         self.browser = webdriver.Chrome()
         Member.objects.create(
