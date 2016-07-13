@@ -60,9 +60,6 @@ class ProjectDetailsPageTest(FunctionalTest):
         self.project = Project.objects.all()[0]
         self.driver.get(self.live_server_url + '/projects/' + self.project.slug + '/')
 
-    def tearDown(self):
-        self.driver.quit()
-
     def test_project_details_are_displayed(self):
         self.verify_project_name()
         self.verify_status()
