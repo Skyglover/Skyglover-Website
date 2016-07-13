@@ -1,12 +1,12 @@
-from django.test import LiveServerTestCase
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
 
-from projects.models import Project
-from helper.helper import wait_for_page_to_load_with_id_or_fail
 from helper.helper import verify_page_h1_is_displayed
+from helper.helper import wait_for_page_to_load_with_id_or_fail
+from projects.models import Project
 
 
-class ProjectsPageTest(LiveServerTestCase):
+class ProjectsPageTest(StaticLiveServerTestCase):
     def setUp(self):
         self.browser = webdriver.Chrome()
 
@@ -59,7 +59,7 @@ class ProjectsPageTest(LiveServerTestCase):
         wait_for_page_to_load_with_id_or_fail(self, self.browser, 'projects_page_title')
 
 
-class ProjectDetailsPageTest(LiveServerTestCase):
+class ProjectDetailsPageTest(StaticLiveServerTestCase):
     def setUp(self):
         self.browser = webdriver.Chrome()
         Project.objects.create(

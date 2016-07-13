@@ -1,10 +1,11 @@
-from django.test import LiveServerTestCase
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
+
 from helper.helper import verify_page_h1_is_displayed, wait_for_page_to_load_with_id_or_fail
 from home.models import SomeText
 
 
-class HomePageTest(LiveServerTestCase):
+class HomePageTest(StaticLiveServerTestCase):
     def setUp(self):
         self.browser = webdriver.Chrome()
         self.browser.get(self.live_server_url)
@@ -58,7 +59,7 @@ class HomePageTest(LiveServerTestCase):
         self.assertEqual('About', about_link.text)
 
 
-class AboutPageTest(LiveServerTestCase):
+class AboutPageTest(StaticLiveServerTestCase):
     def setUp(self):
         SomeText.objects.create(identifier='about_info', text='We are Skyglover')
         self.browser = webdriver.Chrome()
@@ -77,7 +78,7 @@ class AboutPageTest(LiveServerTestCase):
         self.assertEqual(about_information, about_information_displayed.text)
 
 
-class GetInTouchPageTest(LiveServerTestCase):
+class GetInTouchPageTest(StaticLiveServerTestCase):
     def setUp(self):
         self.browser = webdriver.Chrome()
         self.browser.get(self.live_server_url + '/get-in-touch/')
