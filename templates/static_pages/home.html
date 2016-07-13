@@ -2,10 +2,13 @@
 {% block title %}Home{% endblock %}
 {% block content %}
     <header>
-        <nav>
-            <ul>
+        <nav class="navbar navbar-default">
+            <ul class="nav navbar-nav">
                 <li><a id="projects" href="{% url 'projects' %}">Projects</a></li>
                 <li><a id="team" href="{% url 'team'%}">Team</a></li>
+                <div class="navbar-header">
+                    <a href="#" class="navbar-brand">Skyglover</a>
+                </div>
                 <li><a id="about" href="{% url 'about' %}">About</a></li>
             </ul>
         </nav>
