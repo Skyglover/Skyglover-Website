@@ -1,7 +1,6 @@
 from selenium import webdriver
 
 from functional_tests.base import FunctionalTest
-from helper.helper import verify_page_h1_is_displayed
 from home.models import SomeText
 
 
