@@ -1,28 +1,27 @@
-from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
 
-from helper.helper import verify_page_h1_is_displayed
+from functional_tests.base import FunctionalTest
 from team.models import Member
 
 
-class TeamPageTest(StaticLiveServerTestCase):
+class TeamPageTest(FunctionalTest):
     def setUp(self):
-        self.browser = webdriver.Chrome()
+        self.driver = webdriver.Chrome()
         Member.objects.create(
             name='M',
             position='Developer',
             information='I love mathematics and computer science.'
         )
-        self.browser.get(self.live_server_url + '/team/')
+        self.driver.get(self.live_server_url + '/team/')
 
     def tearDown(self):
-        self.browser.quit()
+        self.driver.quit()
         Member.objects.all().delete()
 
     def test_team_page_elements_are_displayed(self):
-        verify_page_h1_is_displayed(self, self.browser, 'Team')
+        self.verify_page_h1_is_displayed('Team')
         members = Member.objects.all()
-        displayed_members = self.browser.find_elements_by_class_name('member')
+        displayed_members = self.driver.find_elements_by_class_name('member')
 
         self.assertEqual(len(members), len(displayed_members))
 
