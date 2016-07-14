@@ -173,3 +173,8 @@ body {
 .icon-bar {
   background-color: #fff;
 }
+
+#skyglover_name {
+  font-family: Guayaba, sans-serif;
+  font-size: 7.0em;
+}
