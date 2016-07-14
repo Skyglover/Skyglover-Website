@@ -61,6 +61,7 @@ body {
 .masthead-nav > li + li {
   margin-left: 20px;
 }
+
 .masthead-nav > li > a {
   padding-right: 0;
   padding-left: 0;
@@ -70,6 +71,7 @@ body {
   color: rgba(255,255,255,.75);
   border-bottom: 2px solid transparent;
 }
+
 .masthead-nav > li > a:hover,
 .masthead-nav > li > a:focus {
   background-color: transparent;
@@ -100,11 +102,6 @@ body {
 .cover {
   padding: 0 20px;
 }
-.cover .btn-lg {
-  padding: 10px 20px;
-  font-weight: bold;
-}
-
 
 /*
  * Footer
@@ -150,6 +147,9 @@ body {
   }
 }
 
+/*
+ * white hamburger menu
+ */
 .icon-bar {
   background-color: #fff;
 }
