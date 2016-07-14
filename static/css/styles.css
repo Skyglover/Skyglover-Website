@@ -11,9 +11,12 @@
 }
 
 a,
-a:focus,
-a:hover {
+a:focus {
   color: #fff;
+}
+
+a:hover {
+  color: #111;
 }
 
 body {
