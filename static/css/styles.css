@@ -74,11 +74,18 @@ body {
     position: fixed;
     top: 0;
   }
+
+  footer {
+    position: fixed;
+    bottom: 0;
+  }
+
   /* Start the vertical centering */
   .site-wrapper-inner {
     vertical-align: middle;
   }
   /* Handle the widths */
+  footer,
   .masthead,
   .cover-container {
     width: 90%; /* Must be percentage or pixels for horizontal alignment */
@@ -86,6 +93,7 @@ body {
 }
 
 @media (min-width: 992px) {
+  footer,
   .masthead,
   .cover-container {
     width: 80%;
