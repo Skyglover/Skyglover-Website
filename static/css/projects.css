@@ -2,3 +2,16 @@
   color: #fff; /* IE8 proofing */
   color: rgba(255,255,255,.75);
 }
+
+body {
+  text-align: center;
+}
+
+@media screen and (min-width: 48em){
+    body{
+        text-align: justify;
+    }
+    .navbar-nav > li + li {
+      margin-left: 100px;
+    }
+}
