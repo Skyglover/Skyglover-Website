@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% block styles %}{% static 'css/projects.css' %}{% endblock %}
 {% block title %}Projects{% endblock %}
 {% block content %}
     <header>
@@ -12,8 +13,8 @@
                     <span class="icon-bar"></span>
                 </button>
                 <span class="navbar-brand">
-                    <a href="{% url 'home' %}">
-                        <span><img src="{% static 'images/skyglover_logo.png' %}" width="45" alt="Skyglover logo"></span>
+                    <a href="{% url 'home' %}" style="text-decoration:none" id="skyglover_name">
+                        <span><img src="{% static 'images/skyglover_logo.png' %}" width="75" alt="Skyglover logo"></span>
                         <span>skyglover</span>
                     </a>
                 </span>
@@ -21,10 +22,12 @@
             <br/>
             <br/>
             <br/>
+            <br/>
+            <br/>
 
             <div class="navbar-collapse collapse">
                 <div class="nav navbar-nav">
-                    <li><a id="projects" href="{% url 'projects' %}">Projects</a></li>
+                    <li class="active"><a id="projects" href="{% url 'projects' %}">Projects</a></li>
                     <li><a id="team" href="{% url 'team'%}">Team</a></li>
                     <li><a id="about" href="{% url 'about' %}">About</a></li>
                 </div>
@@ -32,7 +35,7 @@
         </nav>
     </header>
 
-    <h1 id="projects_page_title">Projects</h1>
+    <main class="inner cover">
     {% if projects %}
     <ul>
         {% for project in projects %}
@@ -50,5 +53,6 @@
             Currently there are no projects to show.
         </p>
     </aside>
+    </main>
     {% endif %}
 {% endblock %}

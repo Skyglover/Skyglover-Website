@@ -1,0 +1,4 @@
+#skyglover_name {
+  color: #fff; /* IE8 proofing */
+  color: rgba(255,255,255,.75);
+}
