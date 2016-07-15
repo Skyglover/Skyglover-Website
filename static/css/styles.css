@@ -142,6 +142,5 @@ main {
 
 #get_in_touch:hover {
   background-color: transparent;
-  border-bottom-color: #a9a9a9;
   border-bottom-color: rgba(189,169,112,.75);
 }
