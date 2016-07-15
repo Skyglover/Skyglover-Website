@@ -18,12 +18,6 @@ body {
   text-align: center;
 }
 
-@media (min-width: 768px) {
-  .masthead-brand {
-    float: left;
-  }
-}
-
 /*
  * Cover
  */
@@ -51,12 +45,6 @@ body {
   /* Start the vertical centering */
   .site-wrapper-inner {
     vertical-align: middle;
-  }
-  /* Handle the widths */
-  footer,
-  .masthead,
-  .cover-container {
-    width: 90%; /* Must be percentage or pixels for horizontal alignment */
   }
 }
 

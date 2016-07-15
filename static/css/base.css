@@ -45,6 +45,20 @@ body {
   margin-bottom: 10px;
 }
 
+@media (min-width: 768px) {
+  .masthead-brand {
+    float: left;
+  }
+}
+
+@media (min-width: 768px) {
+  /* Handle the widths */
+  footer,
+  .masthead,
+  .cover-container {
+    width: 90%; /* Must be percentage or pixels for horizontal alignment */
+  }
+}
 
 #skyglover_name {
   font-family: Guayaba, sans-serif;
