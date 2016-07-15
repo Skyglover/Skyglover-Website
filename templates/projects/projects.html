@@ -1,6 +1,37 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 {% block title %}Projects{% endblock %}
 {% block content %}
+    <header>
+    <nav class="masthead clearfix inner" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle"
+                        data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <span class="navbar-brand">
+                    <a href="{% url 'home' %}">
+                        <span><img src="{% static 'images/skyglover_logo.png' %}" width="45" alt="Skyglover logo"></span>
+                        <span>skyglover</span>
+                    </a>
+                </span>
+            </div>
+            <br/>
+            <br/>
+            <br/>
+
+            <div class="navbar-collapse collapse">
+                <div class="nav navbar-nav">
+                    <li><a id="projects" href="{% url 'projects' %}">Projects</a></li>
+                    <li><a id="team" href="{% url 'team'%}">Team</a></li>
+                    <li><a id="about" href="{% url 'about' %}">About</a></li>
+                </div>
+            </div>
+        </nav>
+    </header>
+
     <h1 id="projects_page_title">Projects</h1>
     {% if projects %}
     <ul>
