@@ -42,6 +42,8 @@
 }
 
 .project > p {
+    font-family: Calibri, sans-serif;
+    font-size: 16px;
     margin: 0 0 25px 0;
     color: #dbdadd;
 }
@@ -50,4 +52,3 @@ ul {
     list-style-type: none;
     padding-left: 0px;
 }
-
