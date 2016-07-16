@@ -25,6 +25,7 @@ a:hover {
 
 #skyglover_name {
   font-size: 5.0em;
+  color: rgba(255,255,255,.75);
 }
 
 #skyglover_logo {
@@ -39,6 +40,7 @@ main.inner.cover {
     font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
     font-size: 15px;
     padding-top: 8px;
+    color: rgba(255,255,255,.75);
 }
 
 /*
