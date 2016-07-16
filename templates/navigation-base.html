@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block styles %}{% static 'css/projects.css' %}{% endblock %}
+
+{% block navigation-bar %}
+    <header>
+    <nav class="masthead clearfix inner" role="navigation">
+        <div class="navbar-header">
+            <span class="navbar-brand">
+                <a href="{% url 'home' %}" id="skyglover_name">
+                    <span><img src="{% static 'images/skyglover_logo.png' %}" width="75" alt="Skyglover logo"></span>
+                    <span>skyglover</span>
+                </a>
+            </span>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+
+        <div id="navigation-buttons">
+            <ul class="nav navbar-nav">
+                {% block navigation-buttons %}
+                {% endblock %}
+            </ul>
+        </div>
+    </nav>
+</header>
+{% endblock %}
