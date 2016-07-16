@@ -2,7 +2,8 @@
 {% load staticfiles %}
 {% block styles %}{% static 'css/home.css' %}{% endblock %}
 {% block title %}Home{% endblock %}
-{% block content %}
+
+{% block navigation-bar %}
     <header>
         <nav class="masthead clearfix inner" role="navigation">
             <div class="navbar-header">
@@ -25,7 +26,9 @@
             </div>
         </nav>
     </header>
+{% endblock %}
 
+{% block content %}
     <main class="inner cover">
         <img id="skyglover_logo" src="{% static 'images/skyglover_logo.png' %}" width="150" alt="Skyglover logo">
         <h1 id="skyglover_name" class="cover-heading">skyglover</h1>
