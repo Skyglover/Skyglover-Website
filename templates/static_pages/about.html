@@ -1,7 +1,6 @@
 {% extends 'navigation-base.html' %}
 {% block title %}About{% endblock %}
 
-
 {% block navigation-buttons %}
     <li><a id="projects" href="{% url 'projects' %}">Projects</a></li>
     <li><a id="team" href="{% url 'team'%}">Team</a></li>
@@ -9,8 +8,9 @@
 {% endblock %}
 
 {% block content %}
-    <h1 id="about_page_title">About</h1>
-    <p>
-        {{ about_information }}
-    </p>
+    <main class="inner cover">
+        <p>
+            {{ about_information }}
+        </p>
+    </main>
 {% endblock %}
