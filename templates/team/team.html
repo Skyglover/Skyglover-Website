@@ -1,33 +1,13 @@
-{% extends 'base.html' %}
+{% extends 'navigation-base.html' %}
 {% load staticfiles %}
-{% block styles %}{% static 'css/projects.css' %}{% endblock %}
 {% block title %}Team{% endblock %}
-{% block content %}
-    <header>
-        <nav class="masthead clearfix inner" role="navigation">
-            <div class="navbar-header">
-                <span class="navbar-brand">
-                    <a href="{% url 'home' %}" style="text-decoration:none" id="skyglover_name">
-                        <span><img src="{% static 'images/skyglover_logo.png' %}" width="75" alt="Skyglover logo"></span>
-                        <span>skyglover</span>
-                    </a>
-                </span>
-            </div>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
 
-            <div id="navigation-buttons">
-                <ul class="nav navbar-nav">
-                    <li>    <a id="projects" href="{% url 'projects' %}">Projects</a></li>
-                    <li class="active"><a id="team" href="{% url 'team'%}">Team</a></li>
-                    <li><a id="about" href="{% url 'about' %}">About</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+{% block navigation-buttons %}
+    <li>    <a id="projects" href="{% url 'projects' %}">Projects</a></li>
+    <li class="active"><a id="team" href="{% url 'team'%}">Team</a></li>
+    <li><a id="about" href="{% url 'about' %}">About</a></li>
+{% endblock %}
+{% block content %}
     <h1 id="team_page_title">Team</h1>
     <main>
     {% for member in members %}
