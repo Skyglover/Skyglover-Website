@@ -99,6 +99,6 @@ body {
  * white hamburger menu
  */
 .icon-bar {
-  background-color: #fff;
+  background-color: rgba(255,255,255,.75);
 }
 
