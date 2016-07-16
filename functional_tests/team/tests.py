@@ -19,7 +19,6 @@ class TeamPageTest(FunctionalTest):
         Member.objects.all().delete()
 
     def test_team_page_elements_are_displayed(self):
-        self.verify_page_h1_is_displayed('Team')
         members = Member.objects.all()
         displayed_members = self.driver.find_elements_by_class_name('member')
 

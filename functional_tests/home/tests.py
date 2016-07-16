@@ -19,12 +19,15 @@ class HomePageTest(FunctionalTest):
 
     def test_team_page_can_be_accessed_from_home_page(self):
         self.click_on_link_with_id('team')
-        self.wait_for_page_to_load_with_id_or_fail('team_page_title')
+        self.wait_for_page_to_load_with_id_or_fail('team')
+        team_button = self.driver.find_element_by_class_name('active').find_element_by_id('team')
+        self.assertEqual('Team', team_button.text)
 
     def test_about_page_can_be_access_from_home_page(self):
         SomeText.objects.create(identifier='about_info', text='We are Skyglover')
         self.click_on_link_with_id('about')
-        self.wait_for_page_to_load_with_id_or_fail('about_page_title')
+        about_button = self.driver.find_element_by_class_name('active').find_element_by_id('about')
+        self.assertEqual('About', about_button.text)
 
     def test_get_in_touch_page_can_be_access_from_home_page(self):
         self.click_on_link_with_id('get_in_touch')
@@ -61,7 +64,6 @@ class AboutPageTest(FunctionalTest):
         self.driver.get(self.live_server_url + '/about/')
 
     def test_about_page_elements_are_displayed(self):
-        self.verify_page_h1_is_displayed('About')
         self.verify_about_information_is_displayed()
 
     def verify_about_information_is_displayed(self):
@@ -77,11 +79,8 @@ class GetInTouchPageTest(FunctionalTest):
 
     def test_get_in_touch_page_elements_are_displayed(self):
         self.verify_page_h1_is_displayed('Get In Touch')
-        twitter = self.driver.find_element_by_id('twitter').text
-        github = self.driver.find_element_by_id('github').text
-        email = self.driver.find_element_by_id('email').text
-        address = self.driver.find_element_by_tag_name('footer').text
-        self.assertEqual('Twitter', twitter)
-        self.assertEqual('Github', github)
-        self.assertEqual('Email', email)
+        self.driver.find_element_by_id('twitter')
+        self.driver.find_element_by_id('github')
+        self.driver.find_element_by_id('email')
+        address = self.driver.find_element_by_tag_name('p').text
         self.assertEqual('Quito, Ecuador', address)
