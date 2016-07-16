@@ -3,11 +3,28 @@
   color: rgba(255,255,255,.75);
 }
 
+.navbar-header {
+    float: left;
+    text-align: center;
+    width: 100%;
+}
+.navbar-brand {float:none;}
+
 @media screen and (min-width: 48em){
     body{
         text-align: justify;
     }
     .navbar-nav > li + li {
-      margin-left: 100px;
+      margin-left: 90px;
+    }
+
+    .navbar-header {
+        float: left;
+        text-align: justify;
+        width: 100%;
+    }
+    .navbar-brand {
+        text-align: justify;
+        float:left;
     }
 }

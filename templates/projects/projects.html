@@ -6,12 +6,6 @@
     <header>
         <nav class="masthead clearfix inner" role="navigation">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle"
-                        data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
                 <span class="navbar-brand">
                     <a href="{% url 'home' %}" style="text-decoration:none" id="skyglover_name">
                         <span><img src="{% static 'images/skyglover_logo.png' %}" width="75" alt="Skyglover logo"></span>
@@ -25,8 +19,8 @@
             <br/>
             <br/>
 
-            <div id="navigation-buttons" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-left">
+            <div id="navigation-buttons">
+                <ul class="nav navbar-nav">
                     <li class="active"><a id="projects" href="{% url 'projects' %}">Projects</a></li>
                     <li><a id="team" href="{% url 'team'%}">Team</a></li>
                     <li><a id="about" href="{% url 'about' %}">About</a></li>
