@@ -2,7 +2,10 @@
 {% load staticfiles %}
 {% block styles %}
     <link href="{% static 'css/navigation-base.css' %}" rel="stylesheet">
+    <link href="{% block extra-styles %}{% endblock %}" rel="stylesheet">
 {% endblock %}
+
+
 
 
 {% block navigation-bar %}

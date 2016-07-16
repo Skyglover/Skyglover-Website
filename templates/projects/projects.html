@@ -1,5 +1,8 @@
 {% extends 'navigation-base.html' %}
+{% load staticfiles %}
 {% block title %}Projects{% endblock %}
+
+{% block extra-styles %}{% static 'css/projects.css' %}{% endblock %}
 
 {% block navigation-buttons %}
     <li class="active"><a id="projects" href="{% url 'projects' %}">Projects</a></li>
