@@ -3,6 +3,8 @@
 
 {% block styles %}
     <link href="{% static 'css/navigation-base.css' %}" rel="stylesheet">
+    <link href="{% static 'font-awesome/css/font-awesome.css' %}" rel="stylesheet">
+    <link href="{% static 'bootstrap/css/bootstrap-social.css' %}" rel="stylesheet">
     <link href="{% static 'css/get-in-touch.css' %}" rel="stylesheet">
 {% endblock %}
 
@@ -27,11 +29,22 @@
         <h1 id="get_in_touch_page_title">Get In Touch</h1>
 
         <ul class="nav navbar-nav">
-            <li id="twitter">Twitter</li>
-            <li id="github">Github</li>
-            <li id="email">Email</li>
+            <li id="twitter">
+                 <a class="btn btn-social-icon btn-twitter">
+                    <span class="fa fa-twitter"></span>
+                </a>
+            </li>
+            <li id="github">
+                <a class="btn btn-social-icon btn-github">
+                    <span class="fa fa-github"></span>
+                </a>
+            </li>
+            <li id="email">
+                <a class="btn btn-social-icon btn-">
+                    <span class="fa fa-envelope"></span>
+                </a>
+            </li>
         </ul>
-
         <br>
         <p>
             Quito, Ecuador

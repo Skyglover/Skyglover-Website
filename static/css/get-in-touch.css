@@ -5,3 +5,21 @@ h1 {
     margin-bottom:10px;
     color: rgb(189,169,112);
 }
+
+.navbar-nav > li + li {
+  margin-left: 30px;
+}
+
+.navbar-nav > li > a {
+    margin-top: 18px;
+}
+
+p {
+    margin-top: 50px;
+    font-size: 15px;
+}
+
+.fa-envelope:hover {
+    background: rgba(255,255,255,.75);
+    color: rgba(0,0,0, 0.5);
+}
