@@ -8,16 +8,18 @@
 {% endblock %}
 
 {% block content %}
-    <h1 id="name">{{ project.name }}</h1>
-    <section id="status">
-        <strong>Status:</strong> {{ project.status }}
-    </section>
-    <section id="start_date">
-        <strong>Start date:</strong> {{ project.start_date|date:"F" }} {{ project.start_date.year }}
-    </section>
-    <section id="description">
-        <p>
-            {{ project.description }}
-        </p>
-    </section>
+    <main class="inner cover">
+        <h1 id="name">{{ project.name }}</h1>
+        <section id="status">
+            <strong>Status:</strong> {{ project.status }}
+        </section>
+        <section id="start_date">
+            <strong>Start date:</strong> {{ project.start_date|date:"F" }} {{ project.start_date.year }}
+        </section>
+        <section id="description">
+            <p>
+                {{ project.description }}
+            </p>
+        </section>
+    </main>
 {% endblock %}
