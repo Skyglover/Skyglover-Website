@@ -34,7 +34,7 @@
     <ul>
         {% for project in projects %}
         <section class="project">
-            <li ><a href="{% url 'project_details' project.slug %}">{{ project.name }}</a></li>
+            <li><a href="{% url 'project_details' project.slug %}">{{ project.name }}</a></li>
             <p>
                 {{ project.summary }}
             </p>

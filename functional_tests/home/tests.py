@@ -13,7 +13,9 @@ class HomePageTest(FunctionalTest):
 
     def test_projects_page_can_be_accessed_from_home_page(self):
         self.click_on_link_with_id('projects')
-        self.wait_for_page_to_load_with_id_or_fail('projects_page_title')
+        self.wait_for_page_to_load_with_id_or_fail('projects')
+        projects_button = self.driver.find_element_by_class_name('active').find_element_by_id('projects')
+        self.assertEqual('Projects', projects_button.text)
 
     def test_team_page_can_be_accessed_from_home_page(self):
         self.click_on_link_with_id('team')
