@@ -1,16 +1,28 @@
-{% extends 'base.html' %}
+{% extends 'navigation-base.html' %}
+{% load staticfiles %}
 {% block title %}{{ project.name }}{% endblock %}
+
+{% block extra-styles %}{% static 'css/project-details.css' %}{% endblock %}
+
+{% block navigation-buttons %}
+    <li><a id="projects" href="{% url 'projects' %}">Projects</a></li>
+    <li><a id="team" href="{% url 'team'%}">Team</a></li>
+    <li><a id="about" href="{% url 'about' %}">About</a></li>
+{% endblock %}
+
 {% block content %}
-    <h1 id="name">{{ project.name }}</h1>
-    <section id="status">
-        <strong>Status:</strong> {{ project.status }}
-    </section>
-    <section id="start_date">
-        <strong>Start date:</strong> {{ project.start_date|date:"F" }} {{ project.start_date.year }}
-    </section>
-    <section id="description">
-        <p>
-            {{ project.description }}
-        </p>
-    </section>
+    <main class="inner cover">
+        <h1 id="name">{{ project.name }}</h1>
+        <section id="status">
+            <strong>Status:</strong> {{ project.status }}
+        </section>
+        <section id="start_date">
+            <strong>Start date:</strong> {{ project.start_date|date:"F" }} {{ project.start_date.year }}
+        </section>
+        <section id="description">
+            <p>
+                {{ project.description }}
+            </p>
+        </section>
+    </main>
 {% endblock %}
