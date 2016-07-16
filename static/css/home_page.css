@@ -27,6 +27,19 @@ a:hover {
   font-size: 5.0em;
 }
 
+#skyglover_logo {
+    width: 100px;
+}
+
+/*main.inner.cover {*/
+    /*margin-top: 40px;*/
+/*}*/
+
+#skyglover_description {
+    font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+    font-size: 15px;
+}
+
 /*
  * Affix and center
  */
@@ -51,6 +64,18 @@ a:hover {
   #skyglover_name {
       font-size: 6.0em;
   }
+
+  #skyglover_logo {
+    width: 125px;
+  }
+
+  #skyglover_description {
+    font-size: 18px;
+  }
+
+  /*main.inner.cover {*/
+    /*margin-top: 20px;*/
+  /*}*/
 }
 
 @media (min-width: 992px) {
@@ -62,6 +87,18 @@ a:hover {
   #skyglover_name {
     font-size: 7.0em;
   }
+
+  #skyglover_logo {
+    width: 150px;
+  }
+
+  #skyglover_description {
+    font-size: 20px;
+  }
+
+  /*main.inner.cover {*/
+    /*margin-top: 50px;*/
+  /*}*/
 }
 
 main {
