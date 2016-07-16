@@ -1,14 +1,18 @@
 {% extends 'navigation-base.html' %}
+{% load staticfiles %}
 {% block title %}Team{% endblock %}
+
+{% block extra-styles %}{% static 'css/team.css' %}{% endblock %}
+
 
 {% block navigation-buttons %}
     <li>    <a id="projects" href="{% url 'projects' %}">Projects</a></li>
     <li class="active"><a id="team" href="{% url 'team'%}">Team</a></li>
     <li><a id="about" href="{% url 'about' %}">About</a></li>
 {% endblock %}
+
 {% block content %}
-    <h1 id="team_page_title">Team</h1>
-    <main>
+    <main class="inner cover">
     {% for member in members %}
         <section class="member">
             <h2>{{ member.name }}</h2>

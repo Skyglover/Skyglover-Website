@@ -37,3 +37,10 @@
     padding-left: 0px;
     padding-right: 0px;
 }
+
+p {
+    font-family: Calibri, sans-serif;
+    font-size: 16px;
+    margin: 20px 0;
+    color: #dbdadd;
+}
