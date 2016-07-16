@@ -1,5 +1,12 @@
-{% extends 'base.html' %}
+{% extends 'navigation-base.html' %}
 {% block title %}{{ project.name }}{% endblock %}
+
+{% block navigation-buttons %}
+    <li><a id="projects" href="{% url 'projects' %}">Projects</a></li>
+    <li><a id="team" href="{% url 'team'%}">Team</a></li>
+    <li><a id="about" href="{% url 'about' %}">About</a></li>
+{% endblock %}
+
 {% block content %}
     <h1 id="name">{{ project.name }}</h1>
     <section id="status">
