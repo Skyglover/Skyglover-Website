@@ -56,3 +56,7 @@ ul {
 .navbar-brand > a {
     text-decoration: none;
 }
+
+.navbar-brand {
+    padding-left: 0px;
+}
