@@ -52,3 +52,7 @@ ul {
     list-style-type: none;
     padding-left: 0px;
 }
+
+.navbar-brand > a {
+    text-decoration: none;
+}
