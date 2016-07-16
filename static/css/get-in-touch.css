@@ -1,22 +1,7 @@
-#skyglover_name {
-  color: #fff; /* IE8 proofing */
-  color: rgba(255,255,255,.75);
-}
-
-.navbar-header {
-    float: left;
-    text-align: center;
-    width: 110%;
-}
-
-.navbar-brand {float:none;}
-
-
-.navbar-brand {
-    padding-left: 0px;
-    padding-right: 0px;
-}
-
-.navbar-brand > a {
-    text-decoration: none;
+h1 {
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    margin-top:30px;
+    margin-bottom:10px;
+    color: rgb(189,169,112);
 }

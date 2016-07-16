@@ -2,6 +2,7 @@
 {% load staticfiles %}
 
 {% block styles %}
+    <link href="{% static 'css/navigation-base.css' %}" rel="stylesheet">
     <link href="{% static 'css/get-in-touch.css' %}" rel="stylesheet">
 {% endblock %}
 
@@ -22,13 +23,18 @@
 
 {% block title %}Get In Touch{% endblock %}
 {% block content %}
-    <h1 id="get_in_touch_page_title">Get In Touch</h1>
-    <ul>
-        <li id="twitter">Twitter</li>
-        <li id="github">Github</li>
-        <li id="email">Email</li>
-    </ul>
-    <p>
-        Quito, Ecuador
-    </p>
+    <main class="inner cover">
+        <h1 id="get_in_touch_page_title">Get In Touch</h1>
+
+        <ul class="nav navbar-nav">
+            <li id="twitter">Twitter</li>
+            <li id="github">Github</li>
+            <li id="email">Email</li>
+        </ul>
+
+        <br>
+        <p>
+            Quito, Ecuador
+        </p>
+    </main>
 {% endblock %}
