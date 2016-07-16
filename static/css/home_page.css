@@ -23,6 +23,10 @@ a:hover {
   padding: 0 20px;
 }
 
+#skyglover_name {
+  font-size: 5.0em;
+}
+
 /*
  * Affix and center
  */
@@ -43,6 +47,10 @@ a:hover {
   .site-wrapper-inner {
     vertical-align: middle;
   }
+
+  #skyglover_name {
+      font-size: 6.0em;
+  }
 }
 
 @media (min-width: 992px) {
@@ -51,10 +59,9 @@ a:hover {
   .cover-container {
     width: 80%;
   }
-}
-
-#skyglover_name {
-  font-size: 7.0em;
+  #skyglover_name {
+    font-size: 7.0em;
+  }
 }
 
 main {
