@@ -28,16 +28,17 @@ a:hover {
 }
 
 #skyglover_logo {
-    width: 100px;
+    width: 130px;
 }
 
-/*main.inner.cover {*/
-    /*margin-top: 40px;*/
-/*}*/
+main.inner.cover {
+    margin-top: 40px;
+}
 
 #skyglover_description {
     font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
     font-size: 15px;
+    padding-top: 8px;
 }
 
 /*
@@ -62,20 +63,21 @@ a:hover {
   }
 
   #skyglover_name {
-      font-size: 6.0em;
+      font-size: 5.5em;
   }
 
   #skyglover_logo {
-    width: 125px;
+    width: 140px;
   }
 
   #skyglover_description {
     font-size: 18px;
+    padding-top: 10px;
   }
 
-  /*main.inner.cover {*/
-    /*margin-top: 20px;*/
-  /*}*/
+  main.inner.cover {
+    margin-top: 20px;
+  }
 }
 
 @media (min-width: 992px) {
@@ -89,16 +91,17 @@ a:hover {
   }
 
   #skyglover_logo {
-    width: 150px;
+    width: 160px;
   }
 
   #skyglover_description {
-    font-size: 20px;
+      font-size: 20px;
+      padding-top: 12px;
   }
 
-  /*main.inner.cover {*/
-    /*margin-top: 50px;*/
-  /*}*/
+  main.inner.cover {
+    margin-top: 81px;
+  }
 }
 
 main {
