@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% block styles %}{% static 'css/projects.css' %}{% endblock %}
+{% block styles %}
+    <link href="{% static 'css/navigation-base.css' %}" rel="stylesheet">
+{% endblock %}
+
 
 {% block navigation-bar %}
     <header>
