@@ -1,0 +1,15 @@
+h1 {
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    margin-top:0px;
+    margin-bottom:20px;
+    color: rgb(189,169,112);
+}
+
+strong {
+    color: rgba(189,169,112, 0.75);
+}
+
+p {
+    text-align: left;
+}

@@ -1,0 +1,19 @@
+h2, h3 {
+    font-family: Arial, sans-serif;
+}
+
+h2 {
+    font-size: 25px;
+    margin-top:20px;
+    color: rgb(189,169,112);
+}
+
+h3 {
+    font-size: 18px;
+    margin-top:10px;
+    color: rgb(244,230,189);
+}
+
+p {
+    margin-top: 10px;
+}
