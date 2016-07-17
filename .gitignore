@@ -105,3 +105,6 @@ ENV/
 .idea/inspectionProfiles
 .idea/SkygloverWebSite.iml
 .idea/misc.xml
+
+# Database
+db.sqlite3
